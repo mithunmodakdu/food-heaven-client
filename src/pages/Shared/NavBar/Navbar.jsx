@@ -24,7 +24,7 @@ const Navbar = () => {
   
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar fixed z-10 max-w-screen-xl mx-auto bg-black text-white bg-opacity-30 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -52,7 +52,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <a href=""><img src="/public/logo.png" alt="" className="w-28" /></a>
+          <a href=""><img src="/public/logo.png" alt="" className="w-20" /></a>
         </div>
 
         <div className="navbar-center hidden lg:flex">
