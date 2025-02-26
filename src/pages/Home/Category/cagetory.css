@@ -1,0 +1,6 @@
+.swiper{
+  overflow: visible !important;
+}
+.swiper-pagination {
+  top: 110% !important;
+}

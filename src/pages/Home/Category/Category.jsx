@@ -2,6 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import "./cagetory.css";
+
 import salad from "../../../assets/category-images/salad.jpg";
 import soup from "../../../assets/category-images/soup.jpg";
 import pizza from "../../../assets/category-images/pizza.jpg";
@@ -41,7 +43,6 @@ const Category = () => {
         <img src={drinks} alt="" />
         <h3 className="text-4xl text-white text-center uppercase -mt-16">Drinks</h3>
       </SwiperSlide>
-
           
     </Swiper>
   );
