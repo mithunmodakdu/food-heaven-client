@@ -11,16 +11,7 @@ const Menu = () => {
       </Helmet>
 
       <Cover img={menuImg} title={"Our Menu"} details={"Our menu features a blend of classic favorites and innovative creations, made from the freshest ingredients to deliver unforgettable dining experiences."}></Cover>
-      <PopularMenu></PopularMenu>
-
-      <Cover img={menuImg} title={"Our Menu"} details={"Our menu features a blend of classic favorites and innovative creations, made from the freshest ingredients to deliver unforgettable dining experiences."}></Cover>
-      <PopularMenu></PopularMenu>
-
-      <Cover img={menuImg} title={"Our Menu"} details={"Our menu features a blend of classic favorites and innovative creations, made from the freshest ingredients to deliver unforgettable dining experiences."}></Cover>
-      <PopularMenu></PopularMenu>
       
-      <Cover img={menuImg} title={"Our Menu"} details={"Our menu features a blend of classic favorites and innovative creations, made from the freshest ingredients to deliver unforgettable dining experiences."}></Cover>
-      <PopularMenu></PopularMenu>
     </div>
   );
 };
