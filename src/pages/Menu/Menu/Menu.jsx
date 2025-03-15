@@ -6,6 +6,7 @@ import pizzaCoverImg from '../../../assets/menu/pizza-cover-img.jpg'
 import soupCoverImg from '../../../assets/menu/soup-cover-img.jpg'
 import saladCoverImg from '../../../assets/menu/salad-cover-img.jpg'
 import dessertCoverImg from '../../../assets/menu/desserts-cover-img.jpg'
+import drinksCoverImg from '../../../assets/menu/drinks-cover-img.jpg'
 import SectionTitle from '../../../components/SectionTitle/SectionTitle';
 import MenuCategory from '../MenuCategory/MenuCategory';
 
@@ -17,6 +18,7 @@ const Menu = () => {
   const salads = menu.filter(item =>item.category === 'salad');
   const soups = menu.filter(item =>item.category === 'soup');
   const desserts = menu.filter(item =>item.category === 'dessert');
+  const drinks = menu.filter(item =>item.category === 'drinks');
   
   
   return (
@@ -34,7 +36,7 @@ const Menu = () => {
 
       {/* pizza items */}
       <MenuCategory 
-        title=" Perfect Pizzas"
+        title="pizza"
         details="Get ready to experience pizza like never before! Our freshly baked pizzas are crafted with love, using the finest ingredients and loaded with mouthwatering toppings. From classic favorites to bold, unique flavors, every slice is a delicious journey."
         coverImg={pizzaCoverImg} 
         items={pizzas}>
@@ -42,7 +44,7 @@ const Menu = () => {
 
       {/* soups items */}
       <MenuCategory 
-        title="Soul-Warming Soups"
+        title="soup"
         details="Our soups are crafted to warm your heart and soul! From creamy classics to hearty broths, each bowl is brimming with rich flavors and wholesome ingredients. Whether you’re craving a comforting cup or a filling bowl, our soups are the perfect way to savor coziness and taste."
         coverImg={soupCoverImg} 
         items={soups}>
@@ -50,7 +52,7 @@ const Menu = () => {
 
       {/* salads items */}
       <MenuCategory 
-        title=" Fresh & Flavorful Salads"
+        title="salad"
         details="Our salads are a celebration of freshness and flavor! Made with crisp greens, vibrant veggies, and zesty dressings, each bowl is packed with nutritious ingredients and bold tastes. Whether you’re looking for a light bite or a hearty meal, our salads are crafted to delight your palate and nourish your body."
         coverImg={saladCoverImg} 
         items={salads}>
@@ -58,10 +60,18 @@ const Menu = () => {
 
        {/* desserts items */}
        <MenuCategory 
-        title={"Delicious Desserts"} 
+        title={"desserts"} 
         details={"Indulge in our mouthwatering selection of desserts crafted to satisfy your sweet cravings. From rich, velvety cakes to creamy cheesecakes and decadent pastries, each dessert is a little slice of heaven."} 
         coverImg={dessertCoverImg} 
         items={desserts}>
+      </MenuCategory>
+
+       {/* desserts items */}
+       <MenuCategory 
+        title={"drinks"} 
+        details={"Indulge in our mouthwatering selection of desserts crafted to satisfy your sweet cravings. From rich, velvety cakes to creamy cheesecakes and decadent pastries, each dessert is a little slice of heaven."} 
+        coverImg={drinksCoverImg} 
+        items={drinks}>
       </MenuCategory>
       
     </div>
