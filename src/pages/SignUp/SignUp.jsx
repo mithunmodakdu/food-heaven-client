@@ -1,4 +1,20 @@
+import { useForm } from "react-hook-form";
+
 const SignUp = () => {
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  }
+
+  // console.log(watch("example")) // watch input value by passing the name of it
+
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -10,19 +26,21 @@ const SignUp = () => {
             a id nisi.
           </p>
         </div>
+
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <form className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
               <input
                 type="text"
+                {...register("name", {required: true})}
                 name="name"
                 placeholder="name"
                 className="input input-bordered"
-                required
               />
+              {errors.name && <span className="text-red-600">Name is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -30,11 +48,13 @@ const SignUp = () => {
               </label>
               <input
                 type="email"
+                {...register("email", {required: true})}
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
-                required
+                
               />
+              {errors.email && <span className="text-red-600">Email is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -42,6 +62,7 @@ const SignUp = () => {
               </label>
               <input
                 type="password"
+                {...register("password")}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
