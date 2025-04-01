@@ -32,9 +32,7 @@ const AuthProvider = ({children}) => {
        displayName: name, 
        photoURL: photoUrl
      }
-     )
-   
-     
+     ) 
   }
 
   useEffect(()=>{

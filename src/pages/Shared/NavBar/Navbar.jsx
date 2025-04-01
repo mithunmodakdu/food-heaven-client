@@ -1,17 +1,18 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  const handleLogOut = () =>{
+  const handleLogOut = () => {
     logOut()
-    .then(()=>{})
-    .catch(error=>console.log(error))
-  }
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
-  const navOptions = 
+  const navOptions = (
     <>
       <li>
         <Link to="/">Home</Link>
@@ -25,16 +26,31 @@ const Navbar = () => {
       <li>
         <Link to="/order/salad">Order</Link>
       </li>
-      
-      {
-        user? <><button onClick={handleLogOut}  className="btn btn-ghost">Log out</button></> : <>
-        
-        <li><Link to="/login">Login</Link></li>
+      <li>
+        <Link to="/">
+          <button className="btn">
+            <FaCartShopping className="text-2xl" />
+            <div className="badge badge-secondary">+99</div>
+          </button>
+        </Link>
+      </li>
+
+      {user ? (
+        <>
+          <button onClick={handleLogOut} className="btn btn-ghost">
+            Log out
+          </button>
         </>
-      }
-      
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </>
+      )}
     </>
-  
+  );
+
   return (
     <>
       <div className="navbar fixed z-10 max-w-screen-xl mx-auto bg-black text-white bg-opacity-30 ">
@@ -65,13 +81,13 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <a href=""><img src="/public/logo.png" alt="" className="w-20" /></a>
+          <a href="">
+            <img src="/public/logo.png" alt="" className="w-20" />
+          </a>
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {navOptions}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
 
         <div className="navbar-end">
