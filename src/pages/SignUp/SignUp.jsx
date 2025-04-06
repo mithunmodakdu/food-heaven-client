@@ -4,39 +4,52 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
-  const {register, handleSubmit, reset, formState: { errors } } = useForm();
-  const {createUser, updateUserProfile} = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const onSubmit = (data) => {
     console.log(data);
 
-    createUser(data.email, data.password)
-    .then(result =>{
+    createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
-      console.log(loggedUser)
-    
-     updateUserProfile(data.name, data.photoUrl)
-      .then(() =>{
-        console.log('profile updated')
-        reset();
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Your account has been created successfully.",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        navigate("/");
+      console.log(loggedUser);
 
-      })
-      .catch(error =>{
-        console.log(error)
-      })
-    
-    })
+      updateUserProfile(data.name, data.photoUrl)
+        .then(() => {
+          // post user info in the database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log('user added to database')
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your account has been created successfully.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
   };
 
   return (
