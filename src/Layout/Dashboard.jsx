@@ -1,4 +1,14 @@
-import { FaAd, FaCalendar, FaHome, FaList, FaSearch, FaShoppingCart } from "react-icons/fa";
+import {
+  FaAd,
+  FaBook,
+  FaCalendar,
+  FaHome,
+  FaList,
+  FaSearch,
+  FaShoppingCart,
+  FaUsers,
+  FaUtensils,
+} from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import { FaEnvelope } from "react-icons/fa6";
@@ -6,41 +16,46 @@ import { FaEnvelope } from "react-icons/fa6";
 const Dashboard = () => {
   const [carts] = useCart();
   const isAdmin = true;
-  
+
   return (
     <div className="flex">
       <div className="w-64 bg-orange-400 min-h-screen">
         <ul className="menu p-4">
-          <li className="mb-4">
-            <NavLink to="/dashboard/userHome">
-              <FaHome></FaHome>
-              User Home
-            </NavLink>
-          </li>
-          <li className="mb-4">
-            <NavLink to="/dashboard/reservation">
-              <FaCalendar></FaCalendar>
-              Reservation
-            </NavLink>
-          </li>
-          <li className="mb-4">
-            <NavLink to="/dashboard/cart">
-              <FaShoppingCart></FaShoppingCart>
-              My Cart ({carts.length})
-            </NavLink>
-          </li>
-          <li className="mb-4">
-            <NavLink to="/dashboard/review">
-              <FaAd></FaAd>
-              Add a review
-            </NavLink>
-          </li>
-          <li className="mb-4">
-            <NavLink to="/dashboard/bookings">
-              <FaList></FaList>
-              My Bookings
-            </NavLink>
-          </li>
+          {isAdmin ? <>
+              <li className="mb-4">
+                <NavLink to="/dashboard/adminHome">
+                  <FaHome></FaHome>
+                  Admin Home
+                </NavLink>
+              </li>
+              <li className="mb-4">
+                <NavLink to="/dashboard/addItems">
+                  <FaUtensils></FaUtensils>
+                  Add Items
+                </NavLink>
+              </li>
+              <li className="mb-4">
+                <NavLink to="/dashboard/manageItems">
+                  <FaList></FaList>
+                  Manage Items
+                </NavLink>
+              </li>
+              <li className="mb-4">
+                <NavLink to="/dashboard/manageBookings">
+                  <FaBook></FaBook>
+                  Manage Bookings
+                </NavLink>
+              </li>
+              <li className="mb-4">
+                <NavLink to="/dashboard/allUsers">
+                  <FaUsers></FaUsers>
+                  All Users
+                </NavLink>
+              </li>
+            </>
+           : 
+            <></>
+          }
 
           <div className="divider"></div>
 
@@ -64,11 +79,10 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-     
+
       <div className="flex-1 p-8">
         <Outlet></Outlet>
       </div>
-      
     </div>
   );
 };
