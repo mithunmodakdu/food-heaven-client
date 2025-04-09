@@ -25,9 +25,8 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/users/${user._id}`)
-        .then(res => {
-          if(res.data.deletedCount > 0){
+        axiosSecure.delete(`/users/${user._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({
               title: "Deleted!",
@@ -35,16 +34,29 @@ const AllUsers = () => {
               icon: "success",
             });
           }
-        })
-        
+        });
+      }
+    });
+  };
+
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${user.name} is admin now.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     });
   };
 
   return (
     <div>
-      <h1>all users here </h1>
-      <h1>total users {users.length}</h1>
+      <h1 className="text-3xl p-8">Total users: {users.length}</h1>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra">
@@ -65,12 +77,21 @@ const AllUsers = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button
-                    onClick={() => handleDelete(user)}
-                    className="btn bg-orange-500 btn-xl"
-                  >
-                    <FaUsers className="text-2xl text-white"></FaUsers>
-                  </button>
+                  {user.role === "admin" ? (
+                    <button
+                      onClick={() => handleMakeAdmin(user)}
+                      className="btn bg-orange-500 btn-xl text-white"
+                    >
+                      Admin
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleMakeAdmin(user)}
+                      className="btn bg-orange-500 btn-xl"
+                    >
+                      <FaUsers className="text-2xl text-white"></FaUsers>
+                    </button>
+                  )}
                 </td>
                 <td>
                   <button
