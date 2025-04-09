@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { FaTrash, FaUsers } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: users = [] } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
@@ -12,11 +14,38 @@ const AllUsers = () => {
     },
   });
 
+  const handleDelete = (user) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/users/${user._id}`)
+        .then(res => {
+          if(res.data.deletedCount > 0){
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "User deleted successfully.",
+              icon: "success",
+            });
+          }
+        })
+        
+      }
+    });
+  };
+
   return (
     <div>
       <h1>all users here </h1>
       <h1>total users {users.length}</h1>
-      
+
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
@@ -24,21 +53,35 @@ const AllUsers = () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {
-              users.map(user =><tr key={user._id}>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-              </tr>)
-            }
-            
-           
+            {users.map((user, index) => (
+              <tr key={user._id}>
+                <th>{index + 1}</th>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(user)}
+                    className="btn bg-orange-500 btn-xl"
+                  >
+                    <FaUsers className="text-2xl text-white"></FaUsers>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(user)}
+                    className="btn btn-ghost btn-lg"
+                  >
+                    <FaTrash className="text-2xl text-red-600"></FaTrash>
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
