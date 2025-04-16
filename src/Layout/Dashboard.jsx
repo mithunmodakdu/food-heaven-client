@@ -12,10 +12,11 @@ import {
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import { FaEnvelope } from "react-icons/fa6";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [carts] = useCart();
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="flex">
