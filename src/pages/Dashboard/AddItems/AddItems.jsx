@@ -2,23 +2,49 @@ import { useForm } from "react-hook-form";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { FaUtensils } from "react-icons/fa6";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-console.log(image_hosting_api)
+
 
 const AddItems = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const onSubmit = async(data) => {
-    console.log(data);
+    // Upload image to image hosting server imgbb and get image url
     const imageFile = {image: data.image[0]};
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
         headers: {'content-type': 'multipart/form-data'}
       }
     )
-    console.log(res.data)
+    
+    // send menu items data to server after getting image url from imgbb 
+    if(res.data.success){
+      const menuItem = {
+        name: data.name,
+        recipe: data.recipe,
+        image: res.data.data.display_url,
+        category: data.category,
+        price: parseFloat(data.price)
+      }
+      const menuRes = await axiosSecure.post('/menu', menuItem);
+      console.log(menuRes.data)
+      if(menuRes.data.insertedId){
+        reset();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.name} has been added.`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    }
+
   };
 
   return (
@@ -63,7 +89,7 @@ const AddItems = () => {
                 <span className="label-text">Price*</span>
               </label>
               <input
-                type="num"
+                type="number"
                 placeholder="Type here price"
                 className="input input-bordered w-full"
                 {...register("price", {required: true})}
