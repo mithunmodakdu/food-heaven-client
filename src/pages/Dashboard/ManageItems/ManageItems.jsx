@@ -50,6 +50,7 @@ const ManageItems = () => {
                 <th>#</th>
                 <th>Item Image</th>
                 <th>Item Name</th>
+                <th>Item Category</th>
                 <th>Item Price</th>
                 <th>Update</th>
                 <th>Delete</th>
@@ -67,6 +68,7 @@ const ManageItems = () => {
                     </div>
                   </td>
                   <td>{item.name}</td>
+                  <td>{item.category}</td>
                   <td>{item.price}</td>
                   <td>
                     <Link to={`/dashboard/updateItem/${item._id}`}>

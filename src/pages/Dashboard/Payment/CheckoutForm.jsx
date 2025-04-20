@@ -42,7 +42,7 @@ const CheckoutForm = () => {
     });
 
     if(error){
-      console.log('payment error', error);
+      // console.log('payment error', error);
       setError(error.message);
     }else{
       console.log('payment method', paymentMethod);
@@ -69,6 +69,17 @@ const CheckoutForm = () => {
       if(paymentIntent.status === 'succeeded'){
         console.log(paymentIntent)
         setTransactionId(paymentIntent.id);
+
+        const payment = {
+          email: user.email,
+          price: totalPrice,
+          transactionId: paymentIntent.id,
+          date: new Date(),
+          cartIds: carts.map(item => item._id),
+          menuItemIds: carts.map(item => item.menuId)
+        }
+        const res = await axiosSecure.post('/payments', payment);
+        console.log('res after payment inserted in database', res.data)
       }
     }
 
