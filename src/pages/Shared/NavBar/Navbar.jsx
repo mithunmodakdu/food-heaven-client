@@ -1,7 +1,7 @@
 // import { useContext } from "react";
 import { Link } from "react-router-dom";
 // import { AuthContext } from "../../../providers/AuthProvider";
-import { FaCartShopping } from "react-icons/fa6";
+import { FaCartShopping, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa6";
 import useCart from "../../../hooks/useCart";
 import useAuthInfo from "../../../hooks/useAuthInfo";
 import useAdmin from "../../../hooks/useAdmin";
@@ -35,9 +35,33 @@ const Navbar = () => {
   );
 
   return (
-    <>
-      <div className="navbar fixed z-10 max-w-screen-xl mx-auto bg-black text-white bg-opacity-30 ">
-        <div className="navbar-start">
+    <div className="fixed z-10  ">
+      <div className="flex items-center justify-between w-full bg-[#F47D2C]">
+        <div className="w-1/3 text-right">
+          <address>Police Plaza, Gulshan, Dhaka</address>
+        </div>
+        <div className="w-1/3">
+          <ul className="menu menu-horizontal rounded-box">
+            <li>
+              <a className="tooltip" data-tip="Facebook">
+                <FaFacebook></FaFacebook>
+              </a>
+            </li>
+            <li> 
+              <a className="tooltip" data-tip="LinkedIn">
+                <FaLinkedin></FaLinkedin>
+              </a>
+            </li>
+            <li>
+              <a className="tooltip" data-tip="Twitter">
+                <FaTwitter></FaTwitter>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="navbar max-w-screen-xl mx-auto bg-black text-white bg-opacity-30">
+        <div className="navbar-start"> 
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -152,16 +176,14 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  
                   <Link to="/login">Login</Link>
-                  
                 </>
               )}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
