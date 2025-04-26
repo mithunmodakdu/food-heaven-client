@@ -1,10 +1,21 @@
 // import { useContext } from "react";
 import { Link } from "react-router-dom";
 // import { AuthContext } from "../../../providers/AuthProvider";
-import { FaCartShopping, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa6";
+import {
+  FaCartShopping,
+  FaEnvelope,
+  FaFacebook,
+  FaLinkedin,
+  FaLocationPin,
+  FaMap,
+  FaPhone,
+  FaTwitter,
+} from "react-icons/fa6";
 import useCart from "../../../hooks/useCart";
 import useAuthInfo from "../../../hooks/useAuthInfo";
 import useAdmin from "../../../hooks/useAdmin";
+import { IoIosPerson, IoMdLogOut } from "react-icons/io";
+import { MdDashboard } from "react-icons/md";
 
 const Navbar = () => {
   // const { user, logOut } = useContext(AuthContext);
@@ -35,33 +46,53 @@ const Navbar = () => {
   );
 
   return (
-    <div className="fixed z-10  ">
-      <div className="flex items-center justify-between w-full bg-[#F47D2C]">
-        <div className="w-1/3 text-right">
-          <address>Police Plaza, Gulshan, Dhaka</address>
-        </div>
-        <div className="w-1/3">
-          <ul className="menu menu-horizontal rounded-box">
+    <div className="">
+      <div className="flex items-center justify-between w-full bg-background text-body ">
+        <div className="w-1/2 text-right">
+          <ul className="menu lg:menu-horizontal rounded-box">
             <li>
-              <a className="tooltip" data-tip="Facebook">
+              <a>
+                <FaLocationPin></FaLocationPin>
+                Police Plaza, Gulshan, Dhaka
+              </a>
+            </li>
+            <li>
+              <a>
+                <FaPhone></FaPhone>
+                01919834450               
+              </a>
+            </li>
+            <li>
+              <a>
+                <FaEnvelope></FaEnvelope>
+                foodheaven@gmail.com
+              </a>
+            </li>
+          </ul>
+          
+        </div>
+        <div className="w-1/5 ">
+          <ul className="menu menu-horizontal rounded-box ">
+            <li>
+              <a className="tooltip tooltip-bottom" data-tip="Facebook">
                 <FaFacebook></FaFacebook>
               </a>
             </li>
-            <li> 
-              <a className="tooltip" data-tip="LinkedIn">
+            <li>
+              <a className="tooltip tooltip-bottom" data-tip="LinkedIn">
                 <FaLinkedin></FaLinkedin>
               </a>
             </li>
             <li>
-              <a className="tooltip" data-tip="Twitter">
+              <a className="tooltip tooltip-bottom" data-tip="Twitter">
                 <FaTwitter></FaTwitter>
               </a>
             </li>
           </ul>
         </div>
       </div>
-      <div className="navbar max-w-screen-xl mx-auto bg-black text-white bg-opacity-30">
-        <div className="navbar-start"> 
+      <div className="navbar max-w-screen-xl mx-auto bg-surface text-heading">
+        <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -82,14 +113,14 @@ const Navbar = () => {
 
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
             >
               {navOptions}
             </ul>
           </div>
 
           <a href="">
-            <img src="/public/logo.png" alt="" className="w-20" />
+            <img src="/public/logo (2).png" alt="" className="w-20" />
           </a>
         </div>
 
@@ -99,7 +130,7 @@ const Navbar = () => {
 
         <div className="navbar-end">
           <div className="flex gap-6">
-            <div className="dropdown dropdown-end">
+            <div className="dropdown dropdown-end z-10">
               <div
                 tabIndex={0}
                 role="button"
@@ -136,7 +167,7 @@ const Navbar = () => {
             <div>
               {user ? (
                 <>
-                  <div className="dropdown dropdown-end ">
+                  <div className="dropdown dropdown-end z-10 ">
                     <div
                       tabIndex={0}
                       role="button"
@@ -150,16 +181,19 @@ const Navbar = () => {
                       tabIndex={0}
                       className="menu menu-sm dropdown-content bg-[#F47D2C]  rounded-box z-1 mt-3 w-52 p-2 shadow"
                     >
-                      <h2 className="text-xl">{user?.displayName}</h2>
+                      
+                      <li>
+                          <Link to="/dashboard/userHome"><IoIosPerson />{user?.displayName}</Link>
+                      </li>
 
                       {user && isAdmin && (
                         <li>
-                          <Link to="/dashboard/adminHome">Dashboard</Link>
+                          <Link to="/dashboard/adminHome"><MdDashboard />Dashboard</Link>
                         </li>
                       )}
                       {user && !isAdmin && (
                         <li>
-                          <Link to="/dashboard/userHome">Dashboard</Link>
+                          <Link to="/dashboard/userHome"><MdDashboard />Dashboard</Link>
                         </li>
                       )}
 
@@ -168,6 +202,7 @@ const Navbar = () => {
                           onClick={handleLogOut}
                           className="btn btn-ghost"
                         >
+                          <IoMdLogOut className="text-xl" />
                           Log out
                         </button>
                       </li>
