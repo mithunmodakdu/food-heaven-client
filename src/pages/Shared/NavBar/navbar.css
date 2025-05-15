@@ -1,0 +1,24 @@
+.menu li > *:not(ul, .menu-title, details, .btn):hover,
+.menu li > *:not(ul, .menu-title, details, .btn).hover,
+.menu li > details > summary:hover{
+    --tw-bg-opacity: 1;
+    background-color: #F47D2C;
+    --tw-text-opacity: 1;
+    color: #FFFFFF;
+}
+.menu li > *:not(ul, .menu-title, details, .btn):active,
+.menu li > *:not(ul, .menu-title, details, .btn).active,
+.menu li > details > summary:active{
+    --tw-bg-opacity: 1;
+    background-color: #E56B17;
+    --tw-text-opacity: 1;
+    color: #FFFFFF;
+}
+.menu li > *:not(ul, .menu-title, details, .btn):focus,
+.menu li > *:not(ul, .menu-title, details, .btn).focus,
+.menu li > details > summary:focus{
+    --tw-bg-opacity: 1;
+    background-color: #E56B17;
+    --tw-text-opacity: 1;
+    color: #FFFFFF;
+}

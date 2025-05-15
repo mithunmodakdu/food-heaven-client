@@ -7,7 +7,6 @@ import {
   FaFacebook,
   FaLinkedin,
   FaLocationPin,
-  FaMap,
   FaPhone,
   FaTwitter,
 } from "react-icons/fa6";
@@ -16,6 +15,7 @@ import useAuthInfo from "../../../hooks/useAuthInfo";
 import useAdmin from "../../../hooks/useAdmin";
 import { IoIosPerson, IoMdLogOut } from "react-icons/io";
 import { MdDashboard } from "react-icons/md";
+import './navbar.css'
 
 const Navbar = () => {
   // const { user, logOut } = useContext(AuthContext);
@@ -33,21 +33,25 @@ const Navbar = () => {
 
   const navOptions = (
     <>
-      <li>
+      <li className="text-textColor mr-6 md:text-lg">
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/menu">Our Menu</Link>
+      <li className="text-textColor mr-6 md:text-lg ">
+        <Link to="/menu">Menus</Link>
       </li>
-      <li>
+      <li className="text-textColor mr-6 md:text-lg">
         <Link to="/order/salad">Order</Link>
+      </li>
+      <li className="text-textColor mr-6 md:text-lg">
+        <Link>About us</Link>
       </li>
     </>
   );
 
   return (
     <div className="">
-      <div className="flex items-center justify-between w-full bg-background text-body ">
+      {/* Top menu  */}
+      <div className="flex items-center justify-between w-full bg-primaryColor text-white ">
         <div className="w-1/2 text-right">
           <ul className="menu lg:menu-horizontal rounded-box">
             <li>
@@ -91,6 +95,8 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+
+      {/* Top menu  */}
       <div className="navbar max-w-screen-xl mx-auto bg-surface text-heading">
         <div className="navbar-start">
           <div className="dropdown">
@@ -134,11 +140,11 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle"
+                className="btn btn-ghost btn-circle mr-8"
               >
                 <div className="indicator">
-                  <FaCartShopping className="text-4xl  text-white" />
-                  <span className="badge badge-lg indicator-item bg-[#F47D2C] p-2">
+                  <FaCartShopping className="text-4xl text-primaryColor" />
+                  <span className="badge badge-lg indicator-item text-whiteColor  bg-secondaryColor p-2">
                     + {carts.length}
                   </span>
                 </div>
