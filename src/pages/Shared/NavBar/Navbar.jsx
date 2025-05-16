@@ -104,7 +104,7 @@ const Navbar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-7 w-7 md:h-9 md:w-9"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -126,13 +126,16 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <a href="">
-            <img src="/public/logo.png" alt="" className="w-20" />
+          <a href="#">
+            <img src="/public/logo.png" alt="" className="w-20 hidden lg:block" />
           </a>
         </div>
 
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
+        <div className="navbar-center ">
+          <a href="#">
+            <img src="/public/logo.png" alt="" className="w-20 block lg:hidden mr-14" />
+          </a>
+          <ul className="hidden lg:flex menu menu-horizontal px-1">{navOptions}</ul>
         </div>
 
         <div className="navbar-end">
@@ -141,10 +144,10 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle mr-8"
+                className="btn btn-ghost btn-circle mr-2 md:mr-5 lg:mr-8"
               >
                 <div className="indicator">
-                  <FaCartShopping className="text-4xl text-textColor" />
+                  <FaCartShopping className="text-3xl md:text-4xl text-textColor" />
                   <span className="badge badge-lg indicator-item text-whiteColor  bg-primaryColor p-2">
                     + {carts.length}
                   </span>
