@@ -51,23 +51,24 @@ const Navbar = () => {
   return (
     <div className="">
       {/* Top menu  */}
-      <div className="flex items-center justify-between w-full bg-primaryColor text-white ">
-        <div className="w-1/2 text-right">
-          <ul className="menu lg:menu-horizontal rounded-box">
-            <li>
-              <a>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full bg-primaryColor text-white ">
+        
+        <div className="md:w-3/4 hidden md:block">
+          <ul className="menu menu-horizontal rounded-box">
+            <li className="lg:ml-10">
+              <a className="px-2">
                 <FaLocationPin></FaLocationPin>
                 Police Plaza, Gulshan, Dhaka
               </a>
             </li>
             <li>
-              <a>
+              <a className="px-2">
                 <FaPhone></FaPhone>
                 01919834450               
               </a>
             </li>
             <li>
-              <a>
+              <a className="px-2">
                 <FaEnvelope></FaEnvelope>
                 foodheaven@gmail.com
               </a>
@@ -75,7 +76,7 @@ const Navbar = () => {
           </ul>
           
         </div>
-        <div className="w-1/5 ">
+        <div className=" w-full text-center md:w-1/4 md:text-right ">
           <ul className="menu menu-horizontal rounded-box ">
             <li>
               <a className="tooltip tooltip-bottom" data-tip="Facebook">
@@ -87,7 +88,7 @@ const Navbar = () => {
                 <FaLinkedin></FaLinkedin>
               </a>
             </li>
-            <li>
+            <li className="lg:mr-10">
               <a className="tooltip tooltip-bottom" data-tip="Twitter">
                 <FaTwitter></FaTwitter>
               </a>
@@ -126,7 +127,7 @@ const Navbar = () => {
           </div>
 
           <a href="">
-            <img src="/public/logo (2).png" alt="" className="w-20" />
+            <img src="/public/logo.png" alt="" className="w-20" />
           </a>
         </div>
 
@@ -135,7 +136,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-          <div className="flex gap-6">
+          <div className="flex justify-center items-center gap-6">
             <div className="dropdown dropdown-end z-10">
               <div
                 tabIndex={0}
@@ -143,8 +144,8 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle mr-8"
               >
                 <div className="indicator">
-                  <FaCartShopping className="text-4xl text-primaryColor" />
-                  <span className="badge badge-lg indicator-item text-whiteColor  bg-secondaryColor p-2">
+                  <FaCartShopping className="text-4xl text-textColor" />
+                  <span className="badge badge-lg indicator-item text-whiteColor  bg-primaryColor p-2">
                     + {carts.length}
                   </span>
                 </div>
@@ -216,9 +217,9 @@ const Navbar = () => {
                   </div>
                 </>
               ) : (
-                <>
-                  <Link to="/login">Login</Link>
-                </>
+                <div className=" border-2 px-3 py-1 md:text-lg text-textColor hover:text-whiteColor active:text-whiteColor border-primaryColor hover:bg-primaryColor active:bg-primaryHoverColor ">
+                  <Link className="" to="/login">Login</Link>
+                </div>
               )}
             </div>
           </div>
