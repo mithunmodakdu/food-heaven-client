@@ -50,7 +50,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      {/* Top menu  */}
+      {/* Top navbar */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full bg-primaryColor text-white ">
         
         <div className="md:w-3/4 hidden md:block">
@@ -97,7 +97,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Top menu  */}
+      {/* Main navbar  */}
       <div className="navbar max-w-screen-xl mx-auto bg-surface text-heading">
         <div className="navbar-start">
           <div className="dropdown">
@@ -120,7 +120,7 @@ const Navbar = () => {
 
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
+              className="dropdown-content menu menu-sm bg-base-100 z-20 rounded-box w-32 p-2 shadow"
             >
               {navOptions}
             </ul>
