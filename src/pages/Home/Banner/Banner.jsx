@@ -8,7 +8,7 @@ const Banner = () => {
   return (
     <div>
       <Carousel 
-      autoPlay={true} 
+      // autoPlay={true} 
       interval={3000} 
       infiniteLoop={true}
       showStatus={false} 
