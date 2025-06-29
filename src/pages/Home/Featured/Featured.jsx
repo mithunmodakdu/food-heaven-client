@@ -14,14 +14,14 @@ const Featured = () => {
           isFeatured = {true}
         ></SectionTitle>
 
-        <div className="md:flex justify-center items-center pb-20 px-36">
+        <div className="md:flex justify-center items-center pb-20 px-5 lg:px-16 xl:px-36">
           <div>
             <img src={featuredImg} alt="" />
           </div>
-          <div className="md:ml-10">
-            <p>11 March, 2025</p>
+          <div className="mt-5 md:ml-10">
+            <p>29 June, 2025</p>
             <p className="uppercase">Our Featured Delicacies</p>
-            <p>
+            <p className="text-justify">
               At Food Heaven, we take pride in serving dishes that not only
               satisfy your cravings but also leave a lasting impression on your
               taste buds. Our featured items are crafted with the freshest
