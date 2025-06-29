@@ -16,6 +16,7 @@ import useAdmin from "../../../hooks/useAdmin";
 import { IoIosPerson, IoMdLogOut } from "react-icons/io";
 import { MdDashboard } from "react-icons/md";
 import './navbar.css'
+import LinkButton from "../../../components/Button/LinkButton";
 
 const Navbar = () => {
   // const { user, logOut } = useContext(AuthContext);
@@ -220,9 +221,10 @@ const Navbar = () => {
                   </div>
                 </>
               ) : (
-                <div className=" border-2 px-3 py-1 md:text-lg text-textColor hover:text-whiteColor active:text-whiteColor border-primaryColor hover:bg-primaryColor active:bg-primaryHoverColor ">
-                  <Link className="" to="/login">Login</Link>
-                </div>
+                // <div className=" border-2 px-3 py-1 md:text-lg text-textColor hover:text-whiteColor active:text-whiteColor border-primaryColor hover:bg-primaryColor active:bg-primaryHoverColor ">
+                //   <Link className="" to="/login">Login</Link>
+                // </div>
+                <LinkButton buttonValue={"Login"} buttonPath={"login"}></LinkButton>
               )}
             </div>
           </div>

@@ -1,6 +1,7 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import featuredImg from "../../../assets/home/featured.jpg";
 import "./Featured.css";
+import Button from "../../../components/Button/LinkButton";
 
 const Featured = () => {
   return (
@@ -13,7 +14,7 @@ const Featured = () => {
           isFeatured = {true}
         ></SectionTitle>
 
-        <div className="md:flex justify-center items-center pb-20 pt-12 px-36">
+        <div className="md:flex justify-center items-center pb-20 px-36">
           <div>
             <img src={featuredImg} alt="" />
           </div>
@@ -31,9 +32,7 @@ const Featured = () => {
               creations and discover why Food Heaven is the ultimate destination
               for food enthusiasts!
             </p>
-            <button className="btn btn-outline border-0 border-b-4 mt-4 text-white">
-              Order Now
-            </button>
+            <Button buttonValue={"Order Now"} buttonPath={"order/salad"} isFeatured = {true}></Button>
           </div>
         </div>
       </div>

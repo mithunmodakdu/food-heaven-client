@@ -3,6 +3,7 @@ import useAuthInfo from "../../hooks/useAuthInfo";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
+import ActionButton from "../Button/ActionButton";
 
 const FoodCard = ({ item }) => {
   const { name, recipe, image, price, _id } = item;
@@ -61,12 +62,14 @@ const FoodCard = ({ item }) => {
       <figure className="">
         <img src={image} alt="Food" className="rounded-lg" />
       </figure>
-      <p className="bg-slate-900 text-white absolute right-0 mt-5 mr-5 px-3">${price}</p>
+      <p className="bg-primaryColor text-white absolute right-0 mt-5 mr-5 px-3">${price}</p>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{name}</h2>
         <p>{recipe}</p>
         <div className="card-actions">
-          <button onClick={handleAddToCart} className="btn btn-outline bg-slate-100 border-0 border-b-4 border-orange-500 text-orange-500 mt-4">Add to Cart</button>
+          {/* <button onClick={handleAddToCart} className="btn btn-outline bg-slate-100 border-0 border-b-4 border-orange-500 text-orange-500 mt-4">Add to Cart</button> */}
+          <ActionButton clickedAction={handleAddToCart} buttonValue={"Add to Cart"}></ActionButton>
+          
         </div>
       </div>
     </div>
