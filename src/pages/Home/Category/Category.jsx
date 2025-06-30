@@ -26,7 +26,7 @@ const Category = () => {
           clickable: true,
         }}
         modules={[FreeMode, Pagination]}
-        className="mySwiper mb-24 w-11/12"
+        className="mySwiper mb-24 w-11/12 "
         breakpoints={{
           375: {
             slidesPerView: 2,
