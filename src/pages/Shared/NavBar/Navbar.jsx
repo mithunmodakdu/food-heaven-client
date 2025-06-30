@@ -128,7 +128,7 @@ const Navbar = () => {
           </div>
 
           <a href="#">
-            <img src="/public/logo.png" alt="" className="w-20 hidden lg:block" />
+            <img src="/logo.png" alt="" className="w-20 hidden lg:block" />
           </a>
         </div>
 
