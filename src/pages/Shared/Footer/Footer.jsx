@@ -10,7 +10,7 @@ import {
 const Footer = () => {
   return (
     <footer className="mt-[100px]">
-      <div className="flex flex-col lg:flex-row  justify-center md:items-center lg:items-baseline bg-secondaryColor text-whiteColor p-10">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 justify-evenly  bg-secondaryColor text-whiteColor p-10">
         <aside className="w-3/4 md:w-2/4 lg:w-1/4 mx-auto lg:mx-0 text-center lg:text-left mb-5">
           <img src="/logo.png" alt="" className="w-24 mx-auto lg:mx-0" />
           <p>
@@ -35,7 +35,7 @@ const Footer = () => {
             </li>
           </ul>
         </aside>
-        <div className="flex flex-col md:flex-row gap-5 justify-center mx-auto text-center md:text-left   ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto gap-10 justify-evenly  text-center lg:text-left">
           <nav className="menu menu-vertical">
             <h6 className="footer-title">Services</h6>
             <a className="link link-hover">Order Online</a>
