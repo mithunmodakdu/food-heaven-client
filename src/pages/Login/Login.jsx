@@ -11,8 +11,8 @@ import Swal from "sweetalert2";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
-  const [captchaValue, setCaptchaValue] = useState('');
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+
   const captchaLength = 6;
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -24,13 +24,10 @@ const Login = () => {
     loadCaptchaEnginge(captchaLength);
   }, []);
 
-  const handleValidateCaptcha = (event) => {
-    event.preventDefault();
-    const user_captcha_value = event.target.value;
-    setCaptchaValue(user_captcha_value);
-
-    if (captchaValue.length === captchaLength) {
-      if (validateCaptcha(captchaValue)) {
+  const handleValidateCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
+    if (user_captcha_value.length === captchaLength) {
+      if (validateCaptcha(user_captcha_value, false) === true) {
         setIsCaptchaValid(true);
       } else {
         setIsCaptchaValid(false);
@@ -70,8 +67,6 @@ const Login = () => {
       navigate(from, { replace: true });
     });
   };
-
-  
 
   return (
     <>
@@ -137,8 +132,7 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
                 <input
-                  
-                  disabled = {!isCaptchaValid}
+                  disabled={!isCaptchaValid}
                   type="submit"
                   className="btn btn-primary"
                   value="Login"
