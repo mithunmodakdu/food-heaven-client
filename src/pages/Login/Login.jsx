@@ -74,8 +74,8 @@ const Login = () => {
         <title>Food Heaven | Login</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col md:flex-row gap-0 w-4/5">
-          <div className="md:w-1/2 h-[90vh]">
+        <div className="hero-content flex flex-col lg:flex-row gap-0 w-4/5">
+          <div className="lg:w-1/2 lg:h-[90vh]">
             <img
               src="/src/assets/login_image.jpg"
               alt="Image for Login Page"
@@ -83,20 +83,18 @@ const Login = () => {
             />
           </div>
 
-          <div className="flex-shrink-0 md:w-1/2 h-[90vh]  shadow-2xl bg-base-100 p-10">
+          <div className="lg:w-1/2 lg:h-[90vh] shadow-2xl bg-base-100 p-10">
             <h1 className="text-3xl font-bold text-center">
               Please login here!
             </h1>
             <form onSubmit={handleLogin} className="">
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-lg">Your Email</span>
-                </label>
+                
                 <input
                   type="email"
                   name="email"
                   placeholder="Write here your email address"
-                  className="input input-bordered"
+                  className="placeholder:italic placeholder:text-mutedColor block bg-whiteColor w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-primaryColor focus:border-2 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                   required
                 />
               </div>
@@ -125,7 +123,7 @@ const Login = () => {
                   type="text"
                   onChange={handleValidateCaptcha}
                   name="captcha"
-                  placeholder="write here captcha"
+                  placeholder="Enter captcha here"
                   className="input input-bordered"
                   required
                 />
