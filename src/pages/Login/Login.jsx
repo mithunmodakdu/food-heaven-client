@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import ActionButton from "../../components/Button/ActionButton";
 
 const Login = () => {
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
@@ -21,7 +22,7 @@ const Login = () => {
   // console.log("state in the location page", location.state)
 
   useEffect(() => {
-    loadCaptchaEnginge(captchaLength);
+    loadCaptchaEnginge(captchaLength, "#FFF8F2", "#2C9DF4");
   }, []);
 
   const handleValidateCaptcha = (e) => {
@@ -73,40 +74,38 @@ const Login = () => {
       <Helmet>
         <title>Food Heaven | Login</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex flex-col lg:flex-row gap-0 w-4/5">
-          <div className="lg:w-1/2 lg:h-[90vh]">
+      <div className="min-h-screen bg-base-200">
+        <div className="mx-auto py-9 flex flex-col lg:flex-row gap-0 w-4/5 ">
+          <div className="lg:w-1/2">
             <img
               src="/src/assets/login_image.jpg"
               alt="Image for Login Page"
-              className="h-full"
+              className="w-full h-auto"
             />
           </div>
 
-          <div className="lg:w-1/2 lg:h-[90vh] shadow-2xl bg-base-100 p-10">
-            <h1 className="text-3xl font-bold text-center">
+          <div className="lg:w-1/2 bg-base-100 p-10 shadow-2xl">
+            <h1 className="text-3xl font-bold text-center mb-6">
               Please login here!
             </h1>
             <form onSubmit={handleLogin} className="">
-              <div className="form-control">
+              <div className="form-control mb-4">
                 
                 <input
                   type="email"
                   name="email"
                   placeholder="Write here your email address"
-                  className="placeholder:italic placeholder:text-mutedColor block bg-whiteColor w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-primaryColor focus:border-2 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  className="block bg-whiteColor w-full py-2 pl-3 pr-3 shadow-sm placeholder:italic placeholder:text-mutedColor  border border-slate-300 rounded-md focus:outline-none focus:border-2 focus:border-primaryColor  focus:ring-secondaryColor focus:ring-2 sm:text-sm"
                   required
                 />
               </div>
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-lg">Your Password</span>
-                </label>
+                
                 <input
                   type="password"
                   name="password"
                   placeholder="Write here your password"
-                  className="input input-bordered"
+                  className="block bg-whiteColor w-full py-2 pl-3 pr-3 shadow-sm placeholder:italic placeholder:text-mutedColor  border border-slate-300 rounded-md focus:border-2  focus:outline-none focus:border-primaryColor focus:ring-secondaryColor focus:ring-2 sm:text-sm"
                   required
                 />
                 <label className="label">
@@ -117,14 +116,14 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <LoadCanvasTemplate />
+                  <LoadCanvasTemplate reloadColor="#F47D2C" />
                 </label>
                 <input
                   type="text"
                   onChange={handleValidateCaptcha}
                   name="captcha"
                   placeholder="Enter captcha here"
-                  className="input input-bordered"
+                  className="block bg-whiteColor w-full py-2 pl-3 pr-3 shadow-sm placeholder:italic placeholder:text-mutedColor  border border-slate-300 rounded-md focus:border-2 focus:outline-none  focus:border-primaryColor focus:ring-secondaryColor focus:ring-2 sm:text-sm"
                   required
                 />
               </div>
@@ -132,12 +131,20 @@ const Login = () => {
                 <input
                   disabled={!isCaptchaValid}
                   type="submit"
-                  className="btn btn-primary"
+                  className="border-2 px-3 py-1 md:text-lg bg-primaryColor text-headingColor   border-primaryColor
+
+                  hover:text-whiteColor hover:bg-primaryHoverColor
+
+                  active:text-whiteColor active:bg-primaryHoverColor
+
+                  disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-300 disabled:cursor-not-allowed
+                  "
+
                   value="Login"
                 />
               </div>
             </form>
-            <p className="text-center text-orange-500 mt-5 font-bold mb-5 ">
+            <p className="text-center text-infoColor mt-4 mb-5 font-bold  ">
               <small>
                 New here? <Link to="/signup">Create your account.</Link>
               </small>

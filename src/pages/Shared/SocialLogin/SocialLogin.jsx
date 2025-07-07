@@ -4,34 +4,50 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
-  const {signInWithGoogle} = useAuthInfo();
+  const { signInWithGoogle } = useAuthInfo();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
-  const handleSignInWithGoogle = () =>{
-    signInWithGoogle()
-    .then(result =>{
-      console.log(result)
-      const userInfo ={
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle().then((result) => {
+      console.log(result);
+      const userInfo = {
         name: result.user.displayName,
-        email: result.user.email
-      }
-      axiosPublic.post('/users', userInfo)
-      .then(res =>{
-        console.log(res.data)
-        navigate('/');
-      })
-      
-    })
-  }
+        email: result.user.email,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        navigate("/");
+      });
+    });
+  };
 
   return (
-    <div className="p-8">
-      <div className="divider"></div>
-      <button onClick={handleSignInWithGoogle} className="btn bg-white text-black border-[#e5e5e5] ">
-        <FaGoogle></FaGoogle>
-        Login with Google
-      </button>
+    <div className="mt-9 mb-4">
+      <div className="divider font-bold">OR Login with</div>
+      <div className="flex gap-4 justify-center">
+        <button
+          onClick={handleSignInWithGoogle}
+          className="btn bg-white text-black border-[#e5e5e5] "
+        >
+          <FaGoogle></FaGoogle>
+          Google
+        </button>
+        <button
+          onClick={handleSignInWithGoogle}
+          className="btn bg-white text-black border-[#e5e5e5] "
+        >
+          <i className="fa-brands fa-facebook"></i>
+          Facebook
+        </button>
+        <button
+          onClick={handleSignInWithGoogle}
+          className="btn bg-white text-black border-[#e5e5e5] "
+        >
+          <i className="fa-brands fa-square-x-twitter"></i>
+          Twitter
+        </button>
+      </div>
     </div>
   );
 };
