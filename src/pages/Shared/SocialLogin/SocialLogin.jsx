@@ -28,21 +28,21 @@ const SocialLogin = () => {
       <div className="flex gap-4 justify-center">
         <button
           onClick={handleSignInWithGoogle}
-          className="btn bg-white text-black border-[#e5e5e5] "
+          className="btn rounded-none text-headingColor  hover:text-whiteColor  active:text-whiteColor  border-primaryColor hover:bg-primaryColor active:bg-primaryHoverColor"
         >
           <FaGoogle></FaGoogle>
           Google
         </button>
         <button
           onClick={handleSignInWithGoogle}
-          className="btn bg-white text-black border-[#e5e5e5] "
+          className="btn rounded-none text-headingColor  hover:text-whiteColor  active:text-whiteColor  border-primaryColor hover:bg-primaryColor active:bg-primaryHoverColor"
         >
           <i className="fa-brands fa-facebook"></i>
           Facebook
         </button>
         <button
           onClick={handleSignInWithGoogle}
-          className="btn bg-white text-black border-[#e5e5e5] "
+          className="btn rounded-none text-headingColor  hover:text-whiteColor  active:text-whiteColor  border-primaryColor hover:bg-primaryColor active:bg-primaryHoverColor"
         >
           <i className="fa-brands fa-square-x-twitter"></i>
           Twitter

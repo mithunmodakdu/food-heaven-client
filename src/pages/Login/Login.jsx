@@ -75,16 +75,16 @@ const Login = () => {
         <title>Food Heaven | Login</title>
       </Helmet>
       <div className="min-h-screen bg-base-200">
-        <div className="mx-auto py-9 flex flex-col lg:flex-row gap-0 w-4/5 ">
+        <div className="mx-auto py-9 flex flex-col lg:flex-row gap-0 w-11/12 md:w-4/5 ">
           <div className="lg:w-1/2">
             <img
               src="/src/assets/login_image.jpg"
               alt="Image for Login Page"
-              className="w-full h-auto"
+              className="w-full h-full"
             />
           </div>
 
-          <div className="lg:w-1/2 bg-base-100 p-10 shadow-2xl">
+          <div className="lg:w-1/2 bg-base-100 p-10 shadow-2xl mt-[-50%] lg:mt-[0%]">
             <h1 className="text-3xl font-bold text-center mb-6">
               Please login here!
             </h1>
